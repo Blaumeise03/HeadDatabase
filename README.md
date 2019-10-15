@@ -7,3 +7,7 @@ Befehle:
  - /head PLAYER <Spielername> : Gibt dir den Kopf des angegebenen Spielers.
  - /head reload : Lädt die Datenbank neu.
  - /head preventSave : Deaktiviert das Speichern der Datenbank beim nächsten Neustart / Reload. (wenn ein zweites mal eingegeben wird das Speichern wieder aktiviert). So werden in der Datei vorgenommene Veränderungen nicht überschrieben (wenn z.B.: neue Köpfe eingefügt wurden).
+
+Rechte:
+ - head.head : Berechtigung für den /head Befehl (und alle unterbefehle)
+ - head.* : Alle Berechtigungen.
