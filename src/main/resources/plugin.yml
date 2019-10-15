@@ -14,4 +14,4 @@ permissions:
     description: Wildcard-permission
     default: op
     children:
-      - head.head
+      head.head: true
