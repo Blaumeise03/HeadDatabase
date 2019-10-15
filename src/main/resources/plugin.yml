@@ -1,0 +1,17 @@
+name: HeadDatabase
+version: 1.0-RELEASE
+main: de.blaumeise03.headDatabase.HeadDatabase
+api-version: 1.13
+
+commands:
+  head:
+    description: Opens the Head-Database or get the specified head.
+permissions:
+  head.head:
+    description: Permission for getting a head.
+    default: op
+  head.*:
+    description: Wildcard-permission
+    default: op
+    children:
+      - head.head
