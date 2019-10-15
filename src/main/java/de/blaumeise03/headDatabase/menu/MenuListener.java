@@ -22,6 +22,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryType;
 
 /**
  * This class contains all required <code>EventHandler</code>. It
@@ -33,9 +34,12 @@ public class MenuListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e){
         if(MenuSession.openMenus.containsKey(e.getWhoClicked())){
-            //Menu menu = MenuSession.openMenus.get(e.getWhoClicked());
-            MenuSession.openMenus.get(e.getWhoClicked()).executeClick((Player) e.getWhoClicked(), e.getSlot());
-            e.setCancelled(true);
+            if (e.getSlotType() == InventoryType.SlotType.CONTAINER) {
+                if (e.getClickedInventory() == MenuSession.openMenus.get(e.getWhoClicked()).getInventory()) {
+                    MenuSession.openMenus.get(e.getWhoClicked()).executeClick((Player) e.getWhoClicked(), e.getSlot());
+                    e.setCancelled(true);
+                }
+            }
         }
     }
 

@@ -50,7 +50,7 @@ public class ScrollableMenu extends Menu implements Scrollable {
             }
         };
         ItemStack rightStack = Head.getSkull("2a3b8f681daad8bf436cae8da3fe8131f62a162ab81af639c3e0644aa6abac2f");
-        ItemMeta iMetaR = leftStack.getItemMeta();
+        ItemMeta iMetaR = rightStack.getItemMeta();
         assert iMetaR != null;
         iMetaR.setDisplayName("§6Nächste Seite");
         rightStack.setItemMeta(iMetaR);
@@ -82,7 +82,8 @@ public class ScrollableMenu extends Menu implements Scrollable {
 
     @Override
     public void processClick(Player p, int slot, MenuSession session) {
-        session.viewContent.get(slot).onClick(p, session);
+        if (session.viewContent.containsKey(slot))
+            session.viewContent.get(slot).onClick(p, session);
     }
 
     @Override

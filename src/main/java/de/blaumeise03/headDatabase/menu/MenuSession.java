@@ -67,4 +67,8 @@ public class MenuSession {
         viewer.openInventory(inventory);
         openMenus.put(viewer,this);
     }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
 }
