@@ -9,6 +9,7 @@ website: http://blaumeise03.de/
 commands:
   head:
     description: Opens the Head-Database or get the specified head.
+    permission: head.head
 permissions:
   head.head:
     description: Permission for getting a head.
