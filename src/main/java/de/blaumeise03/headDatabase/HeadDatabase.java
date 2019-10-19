@@ -40,10 +40,24 @@ public class HeadDatabase extends AdvancedPlugin {
     private static Configuration config;
     private static boolean preventSave = false;
     private static List<HeadCollection> heads;
+    private static AdvancedPlugin plugin;
+
+    public static AdvancedPlugin getPlugin() {
+        return plugin;
+    }
+
+    @Override
+    public void onDisable() {
+        super.onDisable();
+        if (preventSave)
+            getLogger().warning("Config wird NICHT gespeichert!");
+        else config.save();
+    }
 
     @Override
     public void onEnable() {
         super.onEnable();
+        plugin = this;
         getLogger().info("Loading configurations...");
         config = new Configuration("heads.yml",this);
         try {
@@ -119,13 +133,5 @@ public class HeadDatabase extends AdvancedPlugin {
         } catch (PluginNotDefinedException | CommandNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onDisable() {
-        super.onDisable();
-        if(preventSave)
-            getLogger().warning("Config wird NICHT gespeichert!");
-        else config.save();
     }
 }
